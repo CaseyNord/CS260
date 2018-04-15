@@ -6,66 +6,56 @@
 using namespace std;
 
 
-
 LinkedList::LinkedList()
 {
     head = NULL;
     tail = NULL;
-    current = NULL;
-    temp = NULL;
 }
 
 void LinkedList::addNode(int addData)
 {
-    nodePtr n = new node;
-    n->data = addData;
-    n->next = NULL;
+    node *newNode = new node;
+    newNode->data = addData;
+    newNode->next = NULL;
 
     if(head != NULL)
     {
-        current = head;
-        while(current->next != NULL)
-        {
-            current = current->next;
-        }
-        current->next = n;
+        tail->next = newNode;
+        tail = newNode;
     }
     else
     {
-        head = n;
-        tail = n; // where to put tail?
+        head = newNode;
+        tail = newNode;
+        newNode = NULL; // garbage collection?
     }
 }
 
 void LinkedList::deleteNode(int deleteData)
 {
-    nodePtr deletePtr = NULL;
-    current = head;
-    temp = head;
+    node *deletePtr = NULL;
+    node *currentNode = head;
+    node *previousNode = head;
 
-    // iterate through the list until the desired data is found (deleteData)
-    // or the end of the list is reached (NULL)
-    while(current != NULL && current->data != deleteData) // seg faults if these conditions are reversed
+    while(currentNode != NULL && currentNode->data != deleteData)
     {
-        temp = current;
-        current = current->next;
+        previousNode = currentNode;
+        currentNode = currentNode->next;
     }
-    // iterated all the way through until the end of the list
-    if(current == NULL)
+    
+    if(currentNode == NULL)
     {
         cout << deleteData << " was not in the list" << endl;
-        delete deletePtr; // garbage collection -- this call isn't necessary
     }
-    // desired data (deleteData) has been found
     else
     {
-        deletePtr = current;
-        current = current->next;
-        temp->next = current;
+        deletePtr = currentNode;
+        currentNode = currentNode->next;
+        previousNode->next = currentNode;
         if(deletePtr == head)
         {
             head = head->next;
-            temp = NULL;
+            previousNode = NULL;
         }
         delete deletePtr; // garbage collection
         cout << "The value " << deleteData << " was deleted" << endl;
@@ -74,10 +64,11 @@ void LinkedList::deleteNode(int deleteData)
 
 void LinkedList::printList()
 {
-    current = head;
-    while(current != NULL)
+    node *printNode = new node;
+    printNode = head;
+    while(printNode != NULL)
     {
-        cout << current->data << endl;
-        current = current->next;
+        cout << printNode->data << endl;
+        printNode = printNode->next;
     }
 }

@@ -1,15 +1,13 @@
 class LinkedList 
 {
     private:
-        typedef struct node{
+        struct node{
             int data;
             node *next;
-        } *nodePtr;
+        };
 
-        nodePtr head;
-        nodePtr tail;
-        nodePtr current;
-        nodePtr temp;
+        node *head;
+        node *tail;
 
     public:
         LinkedList();
