@@ -1,18 +1,18 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "ArrayStack.h"
+#include "ArrayList.h"
 
 using namespace std;
 
 
 //constructor
-ArrayStack::ArrayStack()
+ArrayList::ArrayList()
 {
     topIndex = -1;
 }
 
-void ArrayStack::push(int newValue)
+void ArrayList::addItem(int newValue)
 {
     if (topIndex < 9)
     {
@@ -21,11 +21,11 @@ void ArrayStack::push(int newValue)
     }
     else
     {
-        cout << "The stack is full!" << endl;
+        cout << "The list is full!" << endl;
     }
 }
 
-int ArrayStack::pop()
+int ArrayList::insertItem(int data, int listIndex)
 {
     int value = myStack[topIndex];
     if (topIndex >= 0)
@@ -40,12 +40,12 @@ int ArrayStack::pop()
     return value;
 }
 
-int ArrayStack::peek()
+void deleteItem(int deleteData)
 {
-    return myStack[topIndex]; 
+    // code here
 }
 
-void ArrayStack::printList()
+void ArrayList::printList()
 {
     for (int i = 0; i <= topIndex; i++)
     {

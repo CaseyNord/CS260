@@ -1,4 +1,4 @@
-class LinkedStack 
+class LinkedList 
 {
     private:
         struct node{
@@ -10,9 +10,9 @@ class LinkedStack
         node *tail;
 
     public:
-        LinkedStack();
-        void push(int addData);
-        void pop();
-        void peek();
+        LinkedList();
+        void addNode(int addData);
+        void insertNode(int addData, int listIndex);
+        void deleteNode(int deleteData);
         void printList();
 };
