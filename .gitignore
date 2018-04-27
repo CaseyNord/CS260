@@ -8,3 +8,4 @@ project02-stack_queue/arraystack/test
 project02-stack_queue/linkedlistqueue/test
 project02-stack_queue/linkedliststack/test
 project03_insert_remove/linkedlist_insert_remove/test
+project03_insert_remove/array_insert_remove/test
