@@ -87,7 +87,7 @@ void ArrayList::deleteItem(int deleteData) // Total (worst case): O(6n+4)
 
     /*
 
-    Is it true that each operation inside of a while loop could be considered
+    Is it true that each operation inside of a while loop or a for loop could be considered
     O(n) because it has to perform an action for each item in the list?  If that
     is the case, then this function would be O(6n+3) because in the worst case (item
     deleted is at index 0), the function would run through and perform 6 operations
