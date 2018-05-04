@@ -22,7 +22,6 @@ class LinkedAutoSort
     public:
         LinkedAutoSort();
         void addNode(int addData);
-        void insertNode(int addData, int listIndex);
         void deleteNode(int deleteData);
         void printList();
 };

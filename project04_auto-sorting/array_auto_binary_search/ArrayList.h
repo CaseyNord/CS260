@@ -16,6 +16,7 @@ class ArrayList
 
     public:
         ArrayList();
+        int binarySearch(int data, int start, int end);
         void addItem(int newValue);
         void deleteItem(int deleteData);
         void printList();

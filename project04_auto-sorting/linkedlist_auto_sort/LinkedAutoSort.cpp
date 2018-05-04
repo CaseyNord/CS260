@@ -22,14 +22,35 @@ LinkedAutoSort::LinkedAutoSort() // Total: O(2)
     tail = NULL; // O(1)
 }
 
-void LinkedAutoSort::addNode(int addData) // Total (worst case): O(7)
+void LinkedAutoSort::addNode(int addData) // Total (worst case): Rewrite
 {
     node *newNode = new node; // O(1)
     newNode->data = addData; // O(1)
     newNode->next = NULL; // O(1)
+    node *currentNode = head;
+
+    node *previousNode = head; // O(1)
 
     if(head != NULL) // O(1)
     {
+        while (currentNode != NULL)
+        {
+            // walks through list and compares newNode data to currentNode data to find where to place
+            // new node.  Cannot figure out how to access data currentNode is pointing to to compare!
+            previousNode = currentNode; // O(n)
+            currentNode = currentNode->next; // O(n)
+            cout << "currdata " << *currentNode << endl;
+            /*
+
+            This block (because currentNode->data doesn't exist, causes seg faults)
+
+            if(currentNode->data > newNode->data) // O(n)
+            {
+                newNode->next = currentNode; // O(1)
+                previousNode->next = newNode; // O(1)
+            }
+            */
+        }
         tail->next = newNode; // O(1)
         tail = newNode; // O(1)
     }
@@ -38,51 +59,6 @@ void LinkedAutoSort::addNode(int addData) // Total (worst case): O(7)
         head = newNode; // O(1)
         tail = newNode; // O(1)
         newNode = NULL;  // O(1)  <-- This garbage collection necessary?
-    }
-}
-
-// Merge this function with add to create a list that sorts itself
-void LinkedAutoSort::sort()
-{
-    node *currentNode = head;
-    node *testNode = head;
-    int temp = 0;
-    int listSize = 0;
-    int listIndex = 0;
-
-    if(head == NULL)
-    {
-        cout << "The list is empty!" << endl;
-    }
-    else if(head->next == NULL)
-    {
-        cout << "The list only has one item!" << endl;
-    }
-    else
-    {
-        while(currentNode != NULL)
-        {
-            currentNode = currentNode->next;
-            listSize++;
-        }
-        currentNode = head;
-
-        while(testNode != NULL)
-        {
-            for(int i = listIndex; i < listSize; i++)
-            {
-                if(testNode->data > currentNode->data)
-                {
-                    temp = testNode->data;
-                    testNode->data = currentNode->data;
-                    currentNode->data = temp;
-                }       
-                currentNode = currentNode->next;
-            }
-            testNode = testNode->next;
-            currentNode = testNode;
-            listIndex++;     
-        }
     }
 }
 

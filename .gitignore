@@ -9,3 +9,5 @@ project02-stack_queue/linkedlistqueue/test
 project02-stack_queue/linkedliststack/test
 project03_insert_remove/linkedlist_insert_remove/test
 project03_insert_remove/array_insert_remove/test
+project04_auto-sorting/linkedlist_auto_sort/test
+project04_auto-sorting/array_auto_binary_search/test

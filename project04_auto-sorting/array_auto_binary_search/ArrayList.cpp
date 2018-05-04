@@ -15,49 +15,72 @@
 
 using namespace std;
 
+const int MAX_ARRAY = 10;
 
 ArrayList::ArrayList() // Total: O(2n+1)
 {
     topIndex = -1; // O(1)
     // Is this good practice?
-    for (int i = 0; i < 10; i++) // O(2n)
+    for (int i = 0; i < MAX_ARRAY; i++) // O(2n)
     {
         myList[i] = NULL; // O(n)
     }
 }
 
-void ArrayList::addItem(int newValue) // Total (worst case): O(3)
+int ArrayList::binarySearch(int data, int start, int end)
 {
-    if (topIndex < 9) // O(1)
+    // Terminate if start is greater than end
+    if (start > end)
     {
-    topIndex++; // O(1)
-    myList[topIndex] = newValue; // O(1)
+        return 0;
     }
-    else
+
+    // This is the mid
+    int sortIndex = start + (end - start) / 2;
+
+    // Is an item of the same value in the sortIndex?
+    if (myList[sortIndex] == data)
+        return sortIndex;
+    else if (myList[sortIndex] > data && myList[sortIndex - 1] <= 0)
+        return sortIndex;
+    else if (myList[sortIndex] < data && myList[sortIndex + 1] >= MAX_ARRAY)
+        return sortIndex;
+    else if (myList[sortIndex] > data && myList[sortIndex - 1] < data)
+        return sortIndex;
+    else if (myList[sortIndex] < data && myList[sortIndex + 1] < data)
+        return sortIndex;
+
+    if (myList[sortIndex] > data)
+        return binarySearch(data, start, sortIndex - 1);
+    if (myList[sortIndex] < data)
+        return binarySearch(data, sortIndex + 1, end);
+}
+
+void ArrayList::addItem(int newValue) // Total (worst case): O(2n+4)
+{
+    int insertIndex = 0;
+
+    if (topIndex < 0) // O(1)
+    {
+        // Add item to an empty list
+        topIndex++; // O(1)
+        myList[topIndex] = newValue; // O(1)
+        return; // O(1)
+    }
+    else if (topIndex >= MAX_ARRAY)
     {
         cout << "The list is full!" << endl; // O(1)
     }
-}
+    else if (topIndex < MAX_ARRAY) // O(1)
+    {
+        insertIndex = binarySearch(newValue, 0, topIndex);
 
-void ArrayList::insertItem(int data, int listIndex) // Total (worst case): O(2n+4)
-{
-    if (listIndex > topIndex + 1) // O(1)
-    {
-        cout << "This insert is out of bounds!" << endl; // O(1)
-        return; // O(1)
-    }
-    else if (topIndex < 10) // O(1)
-    {
-        for (int i = topIndex; i > listIndex; i--)  // O(2n)
+        for (int i = topIndex; i > insertIndex; i--)  // O(2n)
         {
             myList[i] = myList[i-1]; // O(n)
         }
         topIndex++; // O(1)
-        myList[listIndex] = data; // O(1)
-    }
-    else
-    {
-        cout << "The list is full!" << endl; // O(1)
+        myList[insertIndex] = newValue; // O(1)
     }
 }
 
