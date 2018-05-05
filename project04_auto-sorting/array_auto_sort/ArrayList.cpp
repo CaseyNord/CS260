@@ -5,7 +5,7 @@
 // Date: May 7, 2018
 // Project #4
 // Driver Name: testList.cpp
-// Program Description: Array based that auto sorts (using a binary search) when items are added
+// Program Description: Array based that auto sorts when items are added
 // Complexity: Linear - O(n)
 //*****************************************************************
 #include <cstdlib>

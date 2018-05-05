@@ -2,10 +2,10 @@
 // Name: Casey Nord
 // Class: CS260 Spring 2018
 // Class Time: Mon/Wed/Fri 8:00am
-// Date: April 30, 2018
-// Project #3
+// Date: May 7, 2018
+// Project #4
 // Driver Name: testList.cpp
-// Program Description: Array based list with arbitrary insert/remove operations
+// Program Description: Array based that auto sorts (using a binary search) when items are added
 // Complexity: Linear - O(n)
 //*****************************************************************
 class ArrayList
