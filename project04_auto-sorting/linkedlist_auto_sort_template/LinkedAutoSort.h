@@ -11,7 +11,8 @@
 #include <cstdlib>
 #include <iostream>
 
-using namespace std;
+using std::cout;
+using std::endl;
 
 
 template <class T>
@@ -42,40 +43,45 @@ LinkedAutoSort<T>::LinkedAutoSort() // Total: O(2)
 }
 
 template <class T>
-void LinkedAutoSort<T>::addNode(T addData) // Total (worst case): Rewrite
+void LinkedAutoSort<T>::addNode(T addData) // Total (worst case): O(3n+9)
 {
     node *newNode = new node; // O(1)
     newNode->data = addData; // O(1)
     newNode->next = NULL; // O(1)
-    node *currentNode = head;
+    node *currentNode = head; // O(1)
     node *previousNode = head; // O(1)
 
     if(head != NULL) // O(1)
     {
-        // Is head larger than the value I am trying to add?
-        // If so newValue becomes the head
-        if(head->data > newNode->data)
+        // Is current HEAD larger than the value I am trying to add?
+        if(head->data > newNode->data) // O(1)
         {
-            newNode->next = head;
-            head = newNode;
+            // If so newValue becomes HEAD
+            newNode->next = head; // O(1)
+            head = newNode; // O(1)
         }
         else
         {
-            while (currentNode != NULL)
+            // Travel through the list
+            while (currentNode != NULL) // O(n)
             {
+                // Is the value I am trying to add less then the value we are looking at?
                 if(newNode->data < currentNode->data) // O(n)
                 {
+                    // If so place it before that value
                     newNode->next = previousNode->next; // O(1)
                     previousNode->next = newNode; // O(1)
-                    return;
+                    return; // O(1)
                 }
                 else
                 {
+                    // If not keep travelling through the list
                     previousNode = currentNode; // O(n)
                     currentNode = currentNode->next; // O(n)
                 }
             }
-            // New item must be placed at the end of the list!
+            // If we reach the end this new item must be bigger than any other
+            // It becomes the new tail
             tail->next = newNode; // O(1)
             tail = newNode; // O(1)
         }
@@ -94,18 +100,21 @@ void LinkedAutoSort<T>::deleteNode(T deleteData) // Total (worst case): O(3n+12)
     node *currentNode = head; // O(1)
     node *previousNode = head; // O(1)
 
+    // Travel through the list and check for the data we want to delete
     while(currentNode != NULL && currentNode->data != deleteData) // O(n)
     {
         previousNode = currentNode; // O(n)
         currentNode = currentNode->next; // O(n)
     }
     
+    // If we reach the end the item must not exist in the list
     if(currentNode == NULL) // O(1)
     {
         cout << deleteData << " was not in the list" << endl; // O(1)
     }
     else
     {
+        // The item is found and deleted
         deletePtr = currentNode; // O(1)
         currentNode = currentNode->next; // O(1)
         previousNode->next = currentNode; // O(1)
@@ -120,7 +129,7 @@ void LinkedAutoSort<T>::deleteNode(T deleteData) // Total (worst case): O(3n+12)
 }
 
 template <class T>
-void LinkedAutoSort<T>::printList() // Total: O(3n+2)
+void LinkedAutoSort<T> ::printList() // Total: O(3n+2)
 {
     node *printNode = new node; // O(1)
     printNode = head; // O(1)

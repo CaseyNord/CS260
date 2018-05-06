@@ -102,9 +102,9 @@ void LinkedAutoSort::printList() // Total: O(3n+2)
 {
     node *printNode = new node; // O(1)
     printNode = head; // O(1)
-    while(printNode != NULL) // O(n)
+    while(printNode != NULL)
     {
-        cout << printNode->data << endl; // O(n)
-        printNode = printNode->next; // O(n)
+        cout << printNode->data << endl;
+        printNode = printNode->next;
     }
 }
