@@ -12,12 +12,13 @@
 #include <iostream>
 #include "ArrayList.h"
 
-using namespace std;
+using std::cout;
+using std::endl;
 
 
 int main()
 {
-    ArrayList myList;
+    ArrayList<int> myList;
 
     // populate list
     myList.addItem(7);
