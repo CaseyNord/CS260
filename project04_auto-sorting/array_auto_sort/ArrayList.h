@@ -35,11 +35,13 @@ ArrayList<T>::ArrayList() // Total: O(2n+1)
 {
     topIndex = -1; // O(1)
     
+    /*
     // Initialze the array with NULL values
     for (int i = 0; i < MAX; i++) // O(2n)
     {
         myList[i] = NULL; // O(n)
     }
+    */
 }
 
 template <class T>
@@ -56,11 +58,12 @@ void ArrayList<T>::addItem(T newValue) // Total (worst case): O(4n+4)
         return; // O(1)
     }
     // If the array is full
-    else if (topIndex >= MAX)
+    else if (topIndex >= MAX-1)
     {
         cout << "The list is full!" << endl; // O(1)
+        return; // O(1)
     }
-    else if (topIndex < MAX) // O(1)
+    else
     {
         // Travel through the list and find the existing
         // value that is bigger than the value I am trying to add
@@ -70,13 +73,23 @@ void ArrayList<T>::addItem(T newValue) // Total (worst case): O(4n+4)
         }
         
         // Shift all items in the list up to make space for the new item
-        for (int i = topIndex; i > insertIndex; i--)  // O(2n)
+        if (topIndex != 0)
         {
-            myList[i] = myList[i-1]; // O(n)
+            topIndex++; // O(1)
+            for (int i = topIndex; i > insertIndex; i--)  // O(2n)
+            {
+                myList[i] = myList[i-1]; // O(n)
+            }
+            // Place new item in its spot
+            myList[insertIndex] = newValue; // O(1)
         }
-        topIndex++; // O(1)
-        // Place new item in its spot
-        myList[insertIndex] = newValue; // O(1)
+        // Special case where second element added is smaller than first
+        else
+        {
+            topIndex++;
+            myList[topIndex] = myList[topIndex-1];
+            myList[insertIndex] = newValue;
+        }
     }
 }
 
@@ -93,19 +106,20 @@ void ArrayList<T>::deleteItem(T deleteData) // Total (worst case): O(6n+4)
         }
         else
         {
-            // If the item is found set its value to NULL
-            myList[listIndex] = NULL; // O(1)
             topIndex--; // O(1)
             break; // O(1)
         }
     }
 
     // Run back up the list and shift all items over to fill the gap
-    while (listIndex < topIndex)  // O(n)
+    while (listIndex <= topIndex)  // O(n)
     {
         myList[listIndex] = myList[listIndex + 1]; // O(n)
         listIndex++; // O(n)
     }
+
+    // Remove copy of last item in list from index beyond topIndex
+    //myList[listIndex+1] = NULL; // O(1)
 }
 
 template <class T>

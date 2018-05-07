@@ -37,6 +37,23 @@ int main()
     myList.printList();
     cout << "Deleted item from list successfully!" << endl << endl;
 
+    // add item back to list
+    myList.addItem(8);
+    myList.printList();
+    cout << "Item added to list successfully!" << endl << endl;
+
+    // add duplicate item to list
+    myList.addItem(11);
+    myList.printList();
+    cout << "Duplicate item added to list successfully!" << endl << endl;
+
+    // attempt to overfill list
+    myList.addItem(62);
+    myList.addItem(6);
+    myList.printList();
+    cout << "Attempt to overfill successfully!" << endl << endl;
+
+
     cout << "All tests passed!" << endl << endl;    
 
     return 0;
