@@ -129,7 +129,7 @@ void LinkedAutoSort<T>::deleteNode(T deleteData) // Total (worst case): O(3n+12)
 }
 
 template <class T>
-void LinkedAutoSort<T> ::printList() // Total: O(3n+2)
+void LinkedAutoSort<T>::printList() // Total: O(3n+2)
 {
     node *printNode = new node; // O(1)
     printNode = head; // O(1)

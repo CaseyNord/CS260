@@ -18,31 +18,35 @@ using std::endl;
 
 int main(int argc, char** argv)
 {
-    LinkedAutoSort<int> myList;
+    BinaryTree<int> root;//, branchLeft, branchRight, LbranchLeft, LbranchRight, RbranchLeft, RbranchRight, LLbranchLeft;
 
-    // populate list
-    myList.addNode(11);
-    myList.addNode(7);
-    myList.addNode(4);
-    myList.addNode(9);
-    myList.addNode(3);
-    myList.addNode(47);
-    myList.addNode(13);
-    myList.addNode(26);
-    myList.printList();
-    cout << "List populated with data..." << endl << endl;
+    root.setData(42);
+    //root.left = &branchLeft;
+    //root.right = &branchRight;
+
+    /*
+    branchLeft = 21;
+    branchLeft.left = &LbranchLeft;
+    branchLeft.right = &LbranchRight;
+
+    branchRight = 89;
+    branchRight.left = &RbranchLeft;
+    branchRight.right = &RbranchRight;
+
+    LbranchLeft = 10;
+    LbranchLeft.left = &LLbranchLeft;
+
+    LbranchRight = 30;
+
+    RbranchLeft = 60;
     
-    // delete data
-    myList.deleteNode(9);
-    myList.printList();
-    cout << "Deleted item from list successfully!" << endl << endl;
+    RbranchRight = 100;
 
-    // insert repeat data data
-    myList.addNode(11);
-    myList.printList();
-    cout << "Data with repeated value inserted successfully!" << endl << endl;
+    LLbranchLeft = 5;\
+    */
 
-    cout << "All tests passed!" << endl << endl;
+    cout << "Root: " << root.getData() << endl;
+    //root.printData();
 
     return 0;
 }
