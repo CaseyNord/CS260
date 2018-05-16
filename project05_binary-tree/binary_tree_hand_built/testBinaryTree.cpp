@@ -5,7 +5,7 @@
 // Date: May 14, 2018
 // Project #5
 // Program Description: Hand-built binary tree
-// Complexity: Linear - O(n)
+// Complexity: Constant :) - O(1)
 //*****************************************************************
 #include <cstdlib>
 #include <iostream>
