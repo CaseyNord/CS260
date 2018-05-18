@@ -2,10 +2,10 @@
 // Name: Casey Nord
 // Class: CS260 Spring 2018
 // Class Time: Mon/Wed/Fri 8:00am
-// Date: May 14, 2018
-// Project #5
-// Program Description: Hand-built binary tree
-// Complexity: Linear - O(n)
+// Date: May 21, 2018
+// Project #6
+// Program Description: Binary search tree
+// Complexity: 
 //*****************************************************************
 #include <cstdlib>
 #include <iostream>
