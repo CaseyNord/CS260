@@ -20,17 +20,22 @@ int main(int argc, char** argv)
 {
     BinaryTree<int> myTree;
 
-    myTree.AddData(10);
+    myTree.addData(10);
     cout << "Created root node successful!" << endl;
 
-    myTree.AddData(5);
+    myTree.addData(5);
     cout << "Created left leaf node successful!" << endl;
 
-    myTree.AddData(12);
+    myTree.addData(12);
     cout << "Created right leaf node successful!" << endl;
 
-    myTree.AddData(14);
-    myTree.AddData(32);
+    myTree.addData(2);
+    myTree.addData(7);
+
+    myTree.printTree(myTree.root);
+
+    myTree.deleteData(5);
+    cout << "5 and all its children were successfully deleted!" << endl;
 
     myTree.printTree(myTree.root);
 

@@ -25,13 +25,12 @@ class BinaryTree
         };
 
     public:
-         node *root;
+        node *root;
 
         BinaryTree();
-        void AddData(T addData);
+        void addData(T value);
+        void deleteData(T value);
         void printTree(node *branch);
-        //void setData(T addData);
-        //int getData();
 };
 
 
@@ -43,10 +42,10 @@ BinaryTree<T>::BinaryTree()
 }
 
 template <class T>
-void BinaryTree<T>::AddData(T addData)
+void BinaryTree<T>::addData(T value)
 {
     node *newNode = new node;
-    newNode->data = addData;
+    newNode->data = value;
     newNode->left = NULL;
     newNode->right = NULL;
     node *currentNode = root;
@@ -92,6 +91,58 @@ void BinaryTree<T>::AddData(T addData)
 }
 
 template <class T>
+void BinaryTree<T>::deleteData(T value)
+{
+    node *deletePtr = NULL; // O(1)
+    node *currentNode = root; // O(1)
+    node *previousNode = root; // O(1)
+
+    // Travel through the list and check for the data we want to delete
+    while(currentNode != NULL && currentNode->data != value) // O(n)
+    {
+        if (value < currentNode->data)
+        {
+            // Search left side of tree
+            if(currentNode->left != NULL)
+            {
+                currentNode = currentNode->left;
+            }
+        }
+        else
+        {
+            // Search right side of tree
+            if(currentNode->right != NULL)
+            {
+                currentNode = currentNode->right;
+            }
+        }
+    }
+    
+    // If we reach the end the item must not exist in the list
+    if(currentNode == NULL) // O(1)
+    {
+        cout << value << " was not in the list" << endl; // O(1)
+    }
+    else
+    {
+        // The item is found and deleted
+        deletePtr = currentNode; // O(1)
+        /*
+        currentNode = currentNode->next; // O(1)
+        previousNode->next = currentNode; // O(1)
+        if(deletePtr == root) // O(1)
+        {
+            // Delete root node
+        }
+        */
+        delete deletePtr; // O(1)  <-- garbage collection
+        deletePtr->left = NULL;
+        deletePtr->right = NULL;
+        cout << "The value " << value << " was deleted" << endl; // O(1)
+    }
+}
+
+template <class T>
 void BinaryTree<T>::printTree(node *branch)
 {
     // Don't print if there is no tree!
@@ -102,32 +153,3 @@ void BinaryTree<T>::printTree(node *branch)
     printTree(branch->left);
     printTree(branch->right);
 }
-
-/*
-template <class T>
-void BinaryTree<T>::setData(T addData)
-{
-    leaf->data = addData;
-}
-*/
-
-/*
-template <class T>
-int BinaryTree<T>::getData()
-{
-    return leaf->data;
-}
-*/
-
-/*
-template <class T>
-void BinaryTree<T>::printData()
-{
-    cout << leaf->data << endl;
-}
-*/
-
-/*
-template <class T>
-void BinaryTree<T>::setChild()
-*/
