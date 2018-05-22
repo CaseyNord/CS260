@@ -7,6 +7,40 @@
 // Program Description: Binary search tree
 // Complexity: 
 //*****************************************************************
+
+/*
+
+Complexity comparison of search and insert with basic binary tree:
+
+Because searching/inserting an item in a binary tree is a binary process, the ideal complexity for both search and insert is
+O(log n).  This makes binary trees a good data structure in many cases, however, as with pretty much all advanced/complex
+data structures, maintenance and forethought is necessary in order to keep it reliably efficient.
+
+A basic binary search tree, like the one I have written for this assignment, can quickly degrade to a complexity of O(n) for
+all operations as the tree becomes unevenly weighted.  The absolute worst case scenario is a tree that devolves into a linked list.
+
+Because software is designed for an average user, it cannot be expected that data will EVER be evenly or properly distributed into
+an implemented data structure in a way that will keep it operating at or near its ideal efficiency.  This means that in virtually
+every case, maintenance operations have to be included that regularly and systematically reorganize a given data structure in an
+attempt to keep it working as it should.
+
+The correct implemention of maintenance operations depends largely on the how the system will be used.  This means that there is no
+single approach that will always work, because while one system might have regular downtimes where maintenance can be done all at once,
+others will be in constant operation, meaning that maintenance will have to be done very regularly and in small bits so as not to
+create permormance bottlenecks.
+
+In most cases the implementation of good maintenance for a data structure is a larger problem than the basic construction and
+execution of the data structure itself.  From the perspective of a student of a data structures class, our goal is to understand
+how complexity and effeciency work in terms of data, and how data structures themselves can have correct or incorrect solutions.
+The goal of maintaining a data structure to optimize effeciency actually exists somewhat outside of the realm of correct
+or incorrect implemenation, and segways into the broader concept of good software design, which will be studied in later courses.
+
+In conclusion, a binary search tree has an ideal complexity of O(log n), and a worst case of O(n).  We can expect a well designed tree
+with proper maintenance to operate closer to O(log n), and a basic tree (like what I have written) to operate closer to O(n).
+
+*/
+
+
 #include <cstdlib>
 #include <iostream>
 
@@ -59,7 +93,7 @@ void BinaryTree<T>::addData(T value)
         while (loop == true)
         {
             // Is the value I am trying to add bigger or smaller than the current value?
-            if(newNode->data < currentNode->data) // O(1)
+            if(newNode->data < currentNode->data)
             {
                 if(currentNode->left != NULL)
                 {
