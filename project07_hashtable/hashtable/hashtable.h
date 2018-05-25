@@ -5,7 +5,6 @@
 // Date: May 21, 2018
 // Project #7
 // Program Description: Hashtable
-// Complexity: 
 //*****************************************************************
 
 /*
