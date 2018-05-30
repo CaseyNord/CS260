@@ -4,11 +4,12 @@
 // Class Time: Mon/Wed/Fri 8:00am
 // Date: May 28, 2018
 // Project #8
-// Program Description: Array based heapsort
-// Complexity:
+// Program Description: Array based merge sort
+// Complexity: O(nLogn)
 //*****************************************************************
 #include <cstdlib>
 #include <iostream>
+
 #include "MergeSort.h"
 
 using std::cout;
@@ -17,43 +18,34 @@ using std::endl;
 
 int main()
 {
-    MergeSort<int> myList;
+    MergeSort myMerge;
 
-    // populate list
-    myList.addItem(7);
-    myList.addItem(5);
-    myList.addItem(9);
-    myList.addItem(11);
-    myList.addItem(3);
-    myList.addItem(47);
-    myList.addItem(13);
-    myList.addItem(26);
-    myList.printList();
-    cout << "List populated with data..." << endl << endl;
+    /*
+    // Test list of 10 items
+    int list[] = {22, 37, 13, 64, 72, 11, 3, 303, 45, 87};
+    int arraySize = sizeof(list)/sizeof(list[0]);
+    */
+
+    // Big list of random values
+    int arraySize = 100;
+    int list[arraySize];
+    for (int i = 0; i < arraySize; i++)
+    {
+        list[i] = rand() % 1000;
+    }
     
-    // delete data
-    myList.deleteItem(9);
-    myList.printList();
-    cout << "Deleted item from list successfully!" << endl << endl;
 
-    // add item back to list
-    myList.addItem(8);
-    myList.printList();
-    cout << "Item added to list successfully!" << endl << endl;
+    cout << "Test array of 10 values created" << endl << endl;
 
-    // add duplicate item to list
-    myList.addItem(11);
-    myList.printList();
-    cout << "Duplicate item added to list successfully!" << endl << endl;
+    myMerge.printList(list, arraySize);
 
-    // attempt to overfill list
-    myList.addItem(62);
-    myList.addItem(6);
-    myList.printList();
-    cout << "Attempt to overfill successfully!" << endl << endl;
+    cout << endl << "Using merge sort to sort data..." << endl << endl;
 
+    myMerge.sort(list, 0, arraySize - 1);
 
-    cout << "All tests passed!" << endl << endl;    
+    cout << "Mergesort complete.." << endl << endl;
 
+    myMerge.printList(list, arraySize);
+    
     return 0;
 }

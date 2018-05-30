@@ -93,3 +93,6 @@ project06_functional_binary_tree/gtest_linkedlist_binary_tree/CMakeFiles/runTest
 project06_functional_binary_tree/gtest_linkedlist_binary_tree/CMakeFiles/runTests.dir/link.txt
 project06_functional_binary_tree/gtest_linkedlist_binary_tree/CMakeFiles/runTests.dir/progress.make
 project06_functional_binary_tree/gtest_linkedlist_binary_tree/CMakeFiles/runTests.dir/tests.cpp.o
+project08_quadratic_sorting/mergesort/a.out
+project08_quadratic_sorting/heapsort/a.out
+project08_quadratic_sorting/quicksort/a.out

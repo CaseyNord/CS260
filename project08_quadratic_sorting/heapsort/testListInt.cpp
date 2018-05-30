@@ -5,10 +5,11 @@
 // Date: May 28, 2018
 // Project #8
 // Program Description: Array based heap sort
-// Complexity:
+// Complexity: O(nLogn)
 //*****************************************************************
 #include <cstdlib>
 #include <iostream>
+
 #include "HeapSort.h"
 
 using std::cout;
@@ -17,43 +18,44 @@ using std::endl;
 
 int main()
 {
-    HeapSort<int> myList;
+    HeapSort myHeap;
 
-    // populate list
-    myList.addItem(7);
-    myList.addItem(5);
-    myList.addItem(9);
-    myList.addItem(11);
-    myList.addItem(3);
-    myList.addItem(47);
-    myList.addItem(13);
-    myList.addItem(26);
-    myList.printList();
-    cout << "List populated with data..." << endl << endl;
+    /*
+    // Test list of 10 items
+    int heap[] = {22, 37, 13, 64, 72, 11, 3, 303, 45, 87};
+    int arraySize = sizeof(heap)/sizeof(heap[0]);
+    */
+
+    // Big list of random values
+    int arraySize = 100;
+    int heap[arraySize];
+    for (int i = 0; i < arraySize; i++)
+    {
+        heap[i] = rand() % 1000;
+    }
+
+    cout << "Test array of 10 values created" << endl << endl;
+
+    myHeap.printList(heap, arraySize);
+
+    cout << endl << "Heapifying data..." << endl;
+
+    myHeap.heapify(heap, arraySize, 0);
+
+    cout << endl << "Heapify complete..." << endl << endl;
+
+    myHeap.printList(heap, arraySize);
     
-    // delete data
-    myList.deleteItem(9);
-    myList.printList();
-    cout << "Deleted item from list successfully!" << endl << endl;
+    cout << endl << "Note how the values have been 'heaped', not quite sure" << endl;
+    cout << "exactly how this plays out but the values are moving around!" << endl << endl;
 
-    // add item back to list
-    myList.addItem(8);
-    myList.printList();
-    cout << "Item added to list successfully!" << endl << endl;
+    cout << "Running heapsort..." << endl << endl;
 
-    // add duplicate item to list
-    myList.addItem(11);
-    myList.printList();
-    cout << "Duplicate item added to list successfully!" << endl << endl;
+    myHeap.sort(heap, arraySize);
 
-    // attempt to overfill list
-    myList.addItem(62);
-    myList.addItem(6);
-    myList.printList();
-    cout << "Attempt to overfill successfully!" << endl << endl;
+    cout << "Heapsort complete.." << endl << endl;
 
-
-    cout << "All tests passed!" << endl << endl;    
+    myHeap.printList(heap, arraySize);
 
     return 0;
 }
