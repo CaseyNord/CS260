@@ -96,3 +96,5 @@ project06_functional_binary_tree/gtest_linkedlist_binary_tree/CMakeFiles/runTest
 project08_quadratic_sorting/mergesort/a.out
 project08_quadratic_sorting/heapsort/a.out
 project08_quadratic_sorting/quicksort/a.out
+misc_code/linkedlist_stack_from_tail/test
+misc_code/linkedlist_basic/test
