@@ -6,44 +6,39 @@
 // Final Project
 // Program Description: Graph
 //*****************************************************************
-#include <cstdlib>
-#include <iostream>
+#include <vector>
 
-using std::cout;
-using std::endl;
+struct graphEdge {
+    struct graphNode *destination;
+    int weight;
+};
 
-
-template <class T>
-class Graph
-{
-    private:
-        struct graphNode {
-            T data;
-            graphNode *adjacency[];
-        };
-
-    public:
-        Graph();
-        void printGraph();
+struct graphNode {
+    int data;
+    std::vector<graphEdge *> adjacency;
 };
 
 
-template <class T>
-Graph<T>::Graph()
+class Graph
 {
+    /*
+        struct graphNode {
+            int data;
+            std::vector<graphEdge *> adjacency;
+        };
 
-}
+        struct graphEdge {
+            struct graphNode *destination;
+            int weight;
+        };
+    */
 
-template <class T>
-void Graph<T>::printGraph()
-{
-    for (int i = 0; i < capacity; i++)
-    {
-        if (hashTable[i] != "")
-        {
-            cout << hashTable[i] << endl;
-        }
-    }
-    cout << endl;
-}
+        graphNode current;
+        std::vector<graphNode *> nodeList; // Master list
 
+    public:
+        Graph();
+        void addNode(int newData);
+        void addEdge(int sourceLabel, int destinationLabel, int weight);
+        std::string toString();
+};

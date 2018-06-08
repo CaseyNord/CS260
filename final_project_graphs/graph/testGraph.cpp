@@ -12,41 +12,72 @@
 
 #include "Graph.h"
 
+//#include <vector>
+
 using std::cout;
 using std::endl;
 using std::ifstream;
 using std::cerr;
 using std::string;
 
+/*
+struct graphNode {
+    int data;
+    std::vector<graphNode> adjacency;
+};
+*/
+
 
 int main(int argc, char** argv)
 {
-    Hashtable<string> myHash;
+    Graph myGraph;
 
-    myHash.addItem("banana");
-    myHash.addItem("fork");
-    myHash.addItem("chicken");
-    myHash.addItem("burger");
-    myHash.addItem("lettuce");
-    myHash.addItem("knife");
-    myHash.addItem("apple");
-    myHash.addItem("fish");
-    myHash.addItem("salt");
-    myHash.addItem("water");
-    myHash.addItem("waffle");
-    myHash.addItem("potato");
+    myGraph.addNode(65);
 
-    myHash.printList();
+    myGraph.addNode(66);
+    myGraph.addEdge(0, 1, 1);
 
-    myHash.deleteItem("apple");
-    myHash.deleteItem("salt");
-    myHash.deleteItem("banana");
-    myHash.deleteItem("burger");
+    myGraph.addNode(67);
+    myGraph.addEdge(0, 2, 5);
 
-    myHash.printList();
+    myGraph.addEdge(1, 2, 10);
 
-    cout << "Adding data from external source..." << endl << endl;
+    cout << myGraph.toString() << endl;
 
+/*
+    graphNode node1;
+    node1.data = 46;
+
+    graphNode node2;
+    node2.data = 97;
+*/
+
+/*
+    graphNode root;
+    for(int i = 0; i < 10; i++)
+    {
+        graphNode temp;
+        temp.data = i;
+        root.adjacency.push_back(temp);
+    }
+
+    for(int i = 0; i < root.adjacency.size(); i++)
+    {
+        cout << "root.adjacency[" << i << "].data: " << root.adjacency[i].data << endl;
+    }
+
+*/
+
+/*
+    node1.adjacency.push_back(node2);
+
+    cout << "node1.data: " << node1.data << endl;
+    cout << "node2.data: "<< node2.data << endl;
+
+    cout << "node1.adjacency[0].data: " << node1.adjacency[0].data << endl; 
+*/
+
+/*
     // Using input stream to add a massive amount of entries to the table
     // First we declare an input file stream variable
     ifstream inFile;
@@ -68,8 +99,7 @@ int main(int argc, char** argv)
 
     //close the stream
     inFile.close();
-
-    myHash.printList();
+*/
 
     return 0;
 }
