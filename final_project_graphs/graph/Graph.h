@@ -8,6 +8,16 @@
 //*****************************************************************
 #include <vector>
 
+/*
+
+ These structs need to be declared outside of the class in order 
+ for the program to compile correctly. This essentially works
+ the same as declaring these in seperate cpp files.
+
+ What is the best practice?
+
+ */
+
 struct graphEdge {
     struct graphNode *destination;
     int weight;
@@ -21,18 +31,6 @@ struct graphNode {
 
 class Graph
 {
-    /*
-        struct graphNode {
-            int data;
-            std::vector<graphEdge *> adjacency;
-        };
-
-        struct graphEdge {
-            struct graphNode *destination;
-            int weight;
-        };
-    */
-
         graphNode current;
         std::vector<graphNode *> nodeList; // Master list
 
@@ -40,5 +38,8 @@ class Graph
         Graph();
         void addNode(int newData);
         void addEdge(int sourceLabel, int destinationLabel, int weight);
+        int nextVertex(int distance[], bool shortestPathTreeSet[]);
+        void printMinimumDistance(int distance[], int node);
+        void dijkstra(int source);
         std::string toString();
 };

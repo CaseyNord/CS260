@@ -12,94 +12,87 @@
 
 #include "Graph.h"
 
-//#include <vector>
-
 using std::cout;
 using std::endl;
 using std::ifstream;
 using std::cerr;
 using std::string;
 
-/*
-struct graphNode {
-    int data;
-    std::vector<graphNode> adjacency;
-};
-*/
-
 
 int main(int argc, char** argv)
 {
     Graph myGraph;
 
-    myGraph.addNode(65);
+    // Create the nine nodes of our graph
+    myGraph.addNode(0);
+    myGraph.addNode(1);
+    myGraph.addNode(2);
+    myGraph.addNode(3);
+    myGraph.addNode(4);
+    myGraph.addNode(5);
+    myGraph.addNode(6);
+    myGraph.addNode(7);
+    myGraph.addNode(8);
 
-    myGraph.addNode(66);
-    myGraph.addEdge(0, 1, 1);
-
-    myGraph.addNode(67);
-    myGraph.addEdge(0, 2, 5);
-
-    myGraph.addEdge(1, 2, 10);
+    // Create edges:
+    // Node 0
+    myGraph.addEdge(0, 1, 4);
+    myGraph.addEdge(0, 7, 8);
+    // Node 1
+    myGraph.addEdge(1, 0, 4);
+    myGraph.addEdge(1, 2, 8);
+    myGraph.addEdge(1, 7, 11);
+    // Node 2
+    myGraph.addEdge(2, 1, 8);
+    myGraph.addEdge(2, 3, 7);
+    myGraph.addEdge(2, 5, 4);
+    myGraph.addEdge(2, 8, 2);
+    // Node 3
+    myGraph.addEdge(3, 2, 7);
+    myGraph.addEdge(3, 4, 9);
+    myGraph.addEdge(3, 5, 14);
+    // Node 4
+    myGraph.addEdge(4, 3, 9);
+    myGraph.addEdge(4, 5, 10);
+    // Node 5
+    myGraph.addEdge(5, 2, 4);
+    myGraph.addEdge(5, 3, 14);
+    myGraph.addEdge(5, 4, 10);
+    myGraph.addEdge(5, 6, 2);
+    // Node 6
+    myGraph.addEdge(6, 5, 2);
+    myGraph.addEdge(6, 7, 1);
+    myGraph.addEdge(6, 8, 6);
+    // Node 7
+    myGraph.addEdge(7, 0, 8);
+    myGraph.addEdge(7, 1, 11);
+    myGraph.addEdge(7, 6, 1);
+    myGraph.addEdge(7, 8, 7);
+    // Node 8
+    myGraph.addEdge(8, 2, 2);
+    myGraph.addEdge(8, 6, 6);
+    myGraph.addEdge(8, 7, 7);
 
     cout << myGraph.toString() << endl;
 
-/*
-    graphNode node1;
-    node1.data = 46;
-
-    graphNode node2;
-    node2.data = 97;
-*/
-
-/*
-    graphNode root;
-    for(int i = 0; i < 10; i++)
-    {
-        graphNode temp;
-        temp.data = i;
-        root.adjacency.push_back(temp);
-    }
-
-    for(int i = 0; i < root.adjacency.size(); i++)
-    {
-        cout << "root.adjacency[" << i << "].data: " << root.adjacency[i].data << endl;
-    }
-
-*/
-
-/*
-    node1.adjacency.push_back(node2);
-
-    cout << "node1.data: " << node1.data << endl;
-    cout << "node2.data: "<< node2.data << endl;
-
-    cout << "node1.adjacency[0].data: " << node1.adjacency[0].data << endl; 
-*/
-
-/*
-    // Using input stream to add a massive amount of entries to the table
-    // First we declare an input file stream variable
-    ifstream inFile;
-    // Then we open the stream
-    inFile.open("table_entries.txt");
-    // Check is file was opened successfully
-    if (!inFile)
-    {
-        cerr << "Unable to open file table_entries.txt" << endl << endl;
-        exit(1); // Stop program
-    }
-
-    // Read the stream
-    string x;
-    while (inFile >> x)
-    {
-        myHash.addItem(x);
-    }
-
-    //close the stream
-    inFile.close();
-*/
+    myGraph.dijkstra(0);
+    cout << endl;
+    myGraph.dijkstra(1);
+    cout << endl;
+    myGraph.dijkstra(2);
+    cout << endl;
+    myGraph.dijkstra(3);
+    cout << endl;
+    myGraph.dijkstra(4);
+    cout << endl;
+    myGraph.dijkstra(5);
+    cout << endl;
+    myGraph.dijkstra(6);
+    cout << endl;
+    myGraph.dijkstra(7);
+    cout << endl;
+    myGraph.dijkstra(8);  
 
     return 0;
 }
+

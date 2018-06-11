@@ -1,0 +1,19 @@
+The image included with this project was taken from:
+
+https://www.geeksforgeeks.org/greedy-algorithms-set-6-dijkstras-shortest-path-algorithm/
+
+I used this sample graph to build my own graph, that way I could test my functionality against it to easily make sure that I am producing the correct outputs.
+
+In the example provided through the geeksforgeeks website, their graph is simple a two-dimensional array [x][y] where [x] refers to the graph node and [y] refers to the nodes that it is connected to. A value in the [y] array indicates a connection (0 means no connection), and the value itself represents the weight:
+
+{{0, 4, 0, 0, 0, 0, 0, 8, 0},
+ {4, 0, 8, 0, 0, 0, 0, 11, 0},
+ {0, 8, 0, 7, 0, 4, 0, 0, 2},
+ {0, 0, 7, 0, 9, 14, 0, 0, 0},
+ {0, 0, 0, 9, 0, 10, 0, 0, 0},
+ {0, 0, 4, 14, 10, 0, 2, 0, 0},
+ {0, 0, 0, 0, 0, 2, 0, 1, 6},
+ {8, 11, 0, 0, 0, 0, 1, 0, 7},
+ {0, 0, 2, 0, 0, 0, 6, 7, 0}
+ };
+
