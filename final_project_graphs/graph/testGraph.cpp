@@ -73,25 +73,27 @@ int main(int argc, char** argv)
     myGraph.addEdge(8, 6, 6);
     myGraph.addEdge(8, 7, 7);
 
+    cout << "Here is the layout of our graph, please refer to the" << endl;
+    cout << "picture included with submission for a more detailed view:" << endl << endl;
     cout << myGraph.toString() << endl;
 
-    myGraph.dijkstra(0);
-    cout << endl;
-    myGraph.dijkstra(1);
-    cout << endl;
-    myGraph.dijkstra(2);
-    cout << endl;
-    myGraph.dijkstra(3);
-    cout << endl;
-    myGraph.dijkstra(4);
-    cout << endl;
-    myGraph.dijkstra(5);
-    cout << endl;
-    myGraph.dijkstra(6);
-    cout << endl;
-    myGraph.dijkstra(7);
-    cout << endl;
-    myGraph.dijkstra(8);  
+    cout << "Minimum spanning tree starting from vertex 0:" << endl << endl;
+    myGraph.minSpanningTree(0);
+
+    myGraph.shortestPath(0, 1);
+    myGraph.shortestPath(0, 4);
+    myGraph.shortestPath(0, 8);
+
+    /*
+    myGraph.minSpanningTree(1);
+    myGraph.minSpanningTree(2);
+    myGraph.minSpanningTree(3);
+    myGraph.minSpanningTree(4);
+    myGraph.minSpanningTree(5);
+    myGraph.minSpanningTree(6);
+    myGraph.minSpanningTree(7);
+    myGraph.minSpanningTree(8);
+    */
 
     return 0;
 }

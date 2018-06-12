@@ -1,3 +1,54 @@
+//*****************************************************************
+// Name: Casey Nord
+// Class: CS260 Spring 2018
+// Class Time: Mon/Wed/Fri 8:00am
+// Date: June 12, 2018
+// Final Project
+// Program Description: Graph
+// Complexity: O(n^2)
+//*****************************************************************
+
+/*
+
+Ideally, the complexity of a graph using an algorithn like dijkstra
+can achieve O(xlogn), where x is dependent on the number of graph
+connections for each node.
+
+A true O(n^2) complexity assumes that each node contains a full list
+of potential adjacent nodes where the size of the list is the total
+number of items in the graph.
+
+A graph represented as a multidimensional array (like the one in the
+example I used for this project
+https://www.geeksforgeeks.org/greedy-algorithms-set-6-dijkstras-shortest-path-algorithm/)
+would have this complexity.
+
+Our implementation using dynamic vector arrays that are sized only to
+the number of actual adjacent nodes drasitcally reduces this complexity.
+
+Because the graph in this example with the most adjacent connections is
+4, I believe that the most expensive operation would be closer to 
+O(4logn), if I understand this correctly.
+
+This works because as each shortest connection is found, the subsequent
+searches through each node only have to look at the actual adjacent
+connections to that node, and in this example there is no node that
+would require more than 4 searches to find its shortest path.
+
+At the end of the day, however, I've been under the impression that
+we rate our algorithms based on the worst case scenario.  Although this
+specific example works pretty well, there is still the posiblity with
+the overall design of this data structure to degrade to a complexity of
+O(n^2). That being said, it seems to work well enough that a situation
+like that would actually be fairly rare and that in general we can expect
+a pretty good runtime!
+
+Maybe I should have updated the complexity of this specific example to O(4logn).
+
+Please let me know if I'm undertanding this well or if there is something I am missing!
+
+*/
+
 #include <cstdlib>
 #include <iostream>
 #include <vector>
@@ -63,16 +114,23 @@ int Graph::nextVertex(int distance[], bool shortestPathTreeSet[])
     return nextIndex;
 }
 
-void Graph::printMinimumDistance(int distance[], int node)
+void Graph::printMinimumDistance(int *distance, int node)
 {
     cout << "Vertex     Distance from node " << node << endl;
     for (unsigned int i = 0; i < nodeList.size(); i++)
     {
         cout << i << "          " << distance[i] << endl;
     }
+    cout << endl;
 }
 
-void Graph::dijkstra(int source)
+void Graph::printShortestPath(int *distance, int startNode, int endNode)
+{
+    int shortestDistance = distance[endNode];
+    cout << "Shortest path from " << startNode << " to " << endNode << " is " << shortestDistance << endl << endl;
+}
+
+int *Graph::dijkstra(int source)
 {
     /*
 
@@ -84,7 +142,8 @@ void Graph::dijkstra(int source)
 
     */
 
-    int distance[nodeList.size()];
+    static int distance[9]; // <-- I HAVE A MAGIC NUMBER HERE! IS THERE A WAY TO ALLOCATE THIS SO
+                            //     THAT IT CAN BE PASSED TO ANOTHER FUNCTION WITHOUT SEG FAULTING?
     bool shortestPathTreeSet[nodeList.size()];
     
     // Initialize distances as "infinite" and shortestPathTreeSet to false
@@ -122,8 +181,21 @@ void Graph::dijkstra(int source)
             }
         }
     }
+    return distance;
+}
 
-    printMinimumDistance(distance, source);
+void Graph::minSpanningTree(int source)
+{
+    int *tree = new int[nodeList.size()];
+    tree = dijkstra(source);
+    printMinimumDistance(tree, source);
+}
+
+void Graph::shortestPath(int source, int destination)
+{
+    int *tree = new int[nodeList.size()];
+    tree = dijkstra(source);
+    printShortestPath(tree, source, destination);
 }
 
 std::string Graph::toString()

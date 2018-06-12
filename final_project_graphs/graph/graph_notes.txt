@@ -17,3 +17,4 @@ In the example provided through the geeksforgeeks website, their graph is simple
  {0, 0, 2, 0, 0, 0, 6, 7, 0}
  };
 
+I have recreated this graph using the struct-node ADT we created in class.

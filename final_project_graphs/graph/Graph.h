@@ -40,6 +40,9 @@ class Graph
         void addEdge(int sourceLabel, int destinationLabel, int weight);
         int nextVertex(int distance[], bool shortestPathTreeSet[]);
         void printMinimumDistance(int distance[], int node);
-        void dijkstra(int source);
+        void printShortestPath(int *distance, int startNode, int endNode);
+        int *dijkstra(int source);
+        void minSpanningTree(int source);
+        void shortestPath(int source, int destination);
         std::string toString();
 };
